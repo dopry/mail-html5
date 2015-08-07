@@ -11,23 +11,28 @@ module.exports = appCfg;
 /**
  * Global app configurations
  */
+ console.log('location', window.location);
 appCfg.config = {
     pgpComment: 'Whiteout Mail - https://whiteout.io',
-    keyServerUrl: 'https://keys.whiteout.io',
+    keyServerUrl: window.location.origin,
     hkpUrl: 'http://keyserver.ubuntu.com',
-    adminUrl: 'https://admin-node.whiteout.io',
-    settingsUrl: 'https://settings.whiteout.io/autodiscovery/',
+    adminUrl: window.location.origin + '/admin',
+    settingsUrl: window.location.origin + '/autodiscovery/',
     mailServer: {
-        domain: 'wmail.io',
+        domain: '*',
         imap: {
-            hostname: 'imap.wmail.io',
-            port: 993,
-            secure: true
+            hostname: 'localhost',
+            port: 143,
+            secure: false,
+            requireTLS: true,
+            ignoreTLS: false
         },
         smtp: {
-            hostname: 'smtp.wmail.io',
-            port: 465,
-            secure: true
+            hostname: 'localhost',
+            port: 587,
+            secure: false,
+            requireTLS: true,
+            ignoreTLS: false
         }
     },
     oauthDomains: [/\.gmail\.com$/, /\.googlemail\.com$/],
