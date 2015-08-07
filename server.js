@@ -73,6 +73,31 @@ app.disable('x-powered-by');
 
 var development = (process.argv[2] === '--dev');
 
+// autodiscovery - default mail server settings.
+app.get('/autodiscovery/:domain', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Cache-control', 'no-cache');
+    var response = {
+        domain: req.params.domain,
+        imap: {
+            hostname: 'localhost',
+            port: 143,
+            secure: false,
+            requireTLS: true,
+            ignoreTLS: false
+        },
+        smtp: {
+            hostname: 'localhost',
+            port: 587,
+            secure: false,
+            requireTLS: true,
+            ignoreTLS: false
+        }
+    };
+    res.status(200).json(response);
+});
+
 // set HTTP headers
 app.use(function(req, res, next) {
     // prevent rendering website in foreign iframe (Clickjacking)
