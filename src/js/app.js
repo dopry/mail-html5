@@ -1,8 +1,5 @@
 'use strict';
 
-// use service-worker or app-cache for offline caching
-require('./offline-cache');
-
 //
 // Angular app config
 //
