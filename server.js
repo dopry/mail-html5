@@ -81,15 +81,15 @@ app.get('/autodiscovery/:domain', function(req, res, next) {
     var response = {
         domain: req.params.domain,
         imap: {
-            hostname: 'localhost',
-            port: 143,
+            hostname: process.env.IMAP_HOST || 'localhost',
+            port: process.env.IMAP_PORT || 143,
             secure: false,
             requireTLS: true,
             ignoreTLS: false
         },
         smtp: {
-            hostname: 'localhost',
-            port: 587,
+            hostname: process.env.SMTP_HOST || 'localhost',
+            port: process.env.SMTP_PORT || 587,
             secure: false,
             requireTLS: true,
             ignoreTLS: false
