@@ -47,6 +47,7 @@ if (cluster.isMaster) {
 //  WORKER process
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var compression = require('compression');
 var app = express();
 var server = require('http').Server(app);
@@ -101,7 +102,9 @@ app.get('/autodiscovery/:domain', function(req, res, next) {
 
 var keys = {
     'dopry@test.com': {
-        public_key: "-----BEGIN PGP PUBLIC KEY BLOCK-----\n" +
+        public_keys: {
+            'idsjkdhfl':
+                    "-----BEGIN PGP PUBLIC KEY BLOCK-----\n" +
                     "Version: SKS 1.1.5\n" +
                     "Comment: Hostname: keyserver.ubuntu.com\n" +
                     "\n" +
@@ -129,12 +132,15 @@ var keys = {
                     "ou5NKI2FjjMs+MX4AJ4rmwxj9timGrav/smjTgk46LlYTQ==" +
                     "=Di3i\n" +
                     "-----END PGP PUBLIC KEY BLOCK-----"
+        }
     }
 };
 var idxKeysId = {};
 
 // key server.
 app.get('/publickey/user/:email', function (req, res, next) {
+    // get: https://keys.whiteout.io/publickey/user/mail.support@whiteout.io
+    // [{"_id":"EE342F0DDBB0F3BE","userId":"mail.support@whiteout.io","publicKey":"-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v.1.20131205\r\nComment: Whiteout Mail - http://whiteout.io\r\n\r\nxsBNBFLeWSABCADCNCMzMuFQu+hM9nu4tfyIdiyM/sCEhJa/iauzIlhS9Lun\ns0TnO5EF1pSM6CskFBegoA1fSOcRz1oalrZ2xPrVWdvEGf1NmfWEGM3mzaSa\nwRVZLHwPwkIYacobIa7gPeWJslUwSPVD8Yqz3BMXjp9kVcE7u/pgL2dUvg6w\nfBJM2ZJ5+2KJqsk7xhZpL3A0b+kc22srxQZsSQhgOJr0mAtJsjmLv1r/ZtNk\nZ2ktEQgCreHL1Am1dBZcNYB8cUyW0oqvyoA0ZHyRUM8BcOXNYIWAnlzWx99+\n8Adt5Q/07Qo0fy8uZLD/oUiGqDroBPx4QJgv8lbbPXteIQzMqaL/LjMRABEB\nAAHNKFdoaXRlb3V0IFVzZXIgPG1haWwuc3VwcG9ydEB3aGl0ZW91dC5pbz7C\nwFwEEAEIABAFAlLeWSIJEO40Lw3bsPO+AAA33wgApSgBINYWV7oajy8g5Cvx\nP4AmQTLqWrAFgY3wQ3rmyDUoHfS/ohyXQipi9Cyq4kymF6WGf1KGGhjPQosl\nPX9jQGIpJxAGAaV86NEN0gmmou0w7ERHhcCfBbkZPoumggeTkKb9+kCe7KXM\npP9iXfW7sw7ry63KjosLLP3b8aSmfRC5GtpK2Ifo921ubuJc2GvY4cHRWYiU\nSqr2RVj9a4tqBkDiSMcMnVFXaW64I1gXoiqWTtCeQbe4ywoy+AuLfnKs3Uq7\nVMv5ws7QTAacrtJxChJVcjojVAQ7um0H7lUxbXaKOi3Aj3mJQnplqCcEIkTj\nWCZV9w8HRoMPOaIxY7xViw==\r\n=9iZ9\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n\r\n"}]
     log.info('keys', 'Request for %s', req.params.email);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -150,6 +156,46 @@ app.get('/publickey/user/:email', function (req, res, next) {
     return res.status(200).send(user);
 
 });
+
+/// PUT publickey/user/admin@example.org/key/AF3DB54BE8D443A5
+var jsonBodyParser = bodyParser.json();
+app.put('/publickey/user/:email/key/:keyId', jsonBodyParser, function() {
+    log.info('PUT key', 'Request for %s, %s', req.params.email, req.params.keyId);
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.header('Cache-control', 'no-cache');
+
+    var email = req.params.email;
+    var keyId = req.params.keyId;
+    var body = req.body;
+    // {
+    //     "_id":"AF3DB54BE8D443A5",
+    //     "userId":"admin@example.org",
+    //     "publicKey":"-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: OpenPGP.js v1.2.0\r\nComment: Whiteout Mail - https://whiteout.io\r\n\r\nxsBNBFXFFmABCADN8pqnrXg3pSu/avImZyD2umI745XX83vh6evOiYPQcpf/\nEUx0MtrpoAl8pv+N+xKg1otFuqLb3PNSzDSmo9UPE/T/nc9TPX1ijXs2oDUy\na+ada43KZLExliTcyCC8epJGkn18fteUODG8EaPwFWdZNtteoNTQKecIa1gY\nPWQsMKgXOv1kFpkct6QT0wR+fsTkANtoPLD4aK/2RyTl4nN9HYPCm9Oqw208\nLkiltszytc8uubryJc5AGhkANlfEM3N0GFIWk+D9vzl+vAEXwwHPDMTi1wXt\nn+0vqwTXIMgJq98XNXr9Y1Mx5/IW04zAWhf/7Ht/enqGGmh2fJiVjrQ3ABEB\nAAHNFCA8YWRtaW5AZXhhbXBsZS5vcmc+wsByBBABCAAmBQJVxRZgBgsJCAcD\nAgkQrz21S+jUQ6UEFQgCCgMWAgECGwMCHgEAANkjCACuYbpDNSmAkdsAr/ho\n9HOV9fINFDt1meeysJAkNTgJvTJfXyp54BLrkmi4jp5sCUEfrnGb7VsZ5pK6\nEq2URlbPLtok9h3++vDwdKPHrWJip+X7ACjSIRAUoZ3YYNkHdy7+iuNE818r\nYyYWw6s8TXLVjcyOXunNe14R45I5XZImZEpt9R+D1yfTJfi/vd+SjNKCukUC\nZNbRdukzkE6tDx4zVCgE/fwLl+lQ1tSRMRJGx+5MS/flQjHhzF8yxIUdwzqL\nDqou0iT+qHNkBOnvyACaTM+7TXnoGxHrLeFsJEQ5a7/FWX6Emn7g66cgmC2t\nGeFB6P9W1N5Qsqv/LVeXRgw6zsBNBFXFFmABCAC8BbMHhI9ZZQa/NUiQJ2T5\nhS3eZyNHPxuxN44mfLSm8FTIVRrl7TxDvSapY/rLipDZ6ZSElmzIpZkXuwW3\nrzDaGWkdn0i7oHBQ+UNXdZNwbw08ftQPbv3OT7NytmRemDIL+gBN7FnUp5Gz\njX/NMz4dBrwIS2n2pWWGphIadfYnJTYCUz++X323IeINZDv/BUykPOQtPosj\nYecbiBTgG1Nro0S4YTtnnaRemPjnxHXEXn3C7hkjtzFmNJ73r+ZWpecgMtzd\n6W2DJh5aYkoqZhZb2bRGEFPEuQp3z9crYdWxCv87n2NF7PXZFJ2EbpdXcySf\n7IW4ZdVQItGh9xmu5IhNABEBAAHCwF8EGAEIABMFAlXFFmEJEK89tUvo1EOl\nAhsMAABR+QgAiQeE5x/xqrjveDMWfk2PX+Y2AyXYndxSIdn+asgC7zxQ1nkx\nb0qbZ2Gb5Krhgz37916y5U8rbarRb/kg81HGxNncexQZdimE5XJT3ytzAttV\nXecfio1oEj8LSSC+bgYNOxxRMSSG9rPL/UNvZ8I84dppeWdV7TsNwbbd/XKN\nxXkzbG6TCQqVOsTd1aamDK+BsG6W8Q/pvX/F9ZpHGFovz808/2rdDlJSHL0d\nauVN0no5w6oAoDUYH3Zja6G0V3gUBTsrax3F4YBkk5WkcyLO5dIAMPRwZ/si\nveZ/WrC5CCyqS1IK7cNLFqN/Z+eiUJBx4OML90i0dxGhrHxVo9fTOA==\r\n=Jvh3\r\n-----END PGP PUBLIC KEY BLOCK-----\r\n\r\n"
+    // }
+
+    if (keyId != body._id) {
+        res.status(500).json({"error":"id mismatch"});
+    }
+    if (email != body.userId) {
+        res.status(500).json({"error":"userid mismatch"});
+    }
+
+
+    if (!keys[email]) {
+        keys[email] = {
+            public_keys: {},
+            revoked_keys: {}
+        }
+    }
+    keys[email].public_keys[keyId] = body.publicKey;
+    // Their service sends an email with an account verification key here.
+    // TODO: we need to generate an email the verifier can pick up.
+    return res.status(200).send();
+});
+
+// https://keys.whiteout.io/verify/ec128900-7189-4f65-85fa-d57394a9e212
+// {"msg":"Verification successful"}
 
 // set HTTP headers
 app.use(function(req, res, next) {
