@@ -13,7 +13,7 @@ module.exports = {
         })
     },
     log: {
-        level: "silly",
+        level: "verbose",
         http: ':remote-addr [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer"'
     }
 };
