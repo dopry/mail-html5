@@ -91,6 +91,8 @@ COPY ./config/dovecot.auth /etc/dovecot/conf.d/10-auth.conf
 COPY ./config/dovecot.master /etc/dovecot/conf.d/10-master.conf
 COPY ./config/dovecot.lda /etc/dovecot/conf.d/15-lda.conf
 COPY ./config/dovecot.imap /etc/dovecot/conf.d/20-imap.conf
+COPY ./config/example/passwords /etc/dovecot/passwd
+
 # Uncomment to add verbose logging
 COPY ./config/dovecot.logging /etc/dovecot/conf.d/10-logging.conf
 COPY ./config/rsyslog.conf /etc/rsyslog.conf
