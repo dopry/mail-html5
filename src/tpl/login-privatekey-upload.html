@@ -12,15 +12,14 @@
 
       <div ng-show="step === 1">
         <p class="typo-paragraph">
-          Your backup code can be used to securely backup and synchronize your encryption key between devices.
+          Your backup code is used to encrypt your private key so it can be securely stored on your mail server to be synchronized between your devices.
         </p>
         <p class="typo-paragraph">
           <code class="typo-code">{{displayedCode}}</code>
         </p>
         <p class="typo-paragraph">
-          Please write down your backup code and keep it in a safe place. Whiteout Networks cannot recover a lost code.
+          Please write down your backup code and keep it in a safe place. It cannot be recovered if lost.
         </p>
-
         <form class="form">
           <div class="form__row">
             <button class="btn btn--big" type="submit" ng-click="goForward()">Continue</button>
