@@ -12,24 +12,6 @@
 
         <form class="form" name="form">
           <p class="form__error-message" ng-show="errMsg">{{errMsg}}</p>
-          <div class="form__row">
-            <label class="input-checkbox">
-              <span class="checkbox">
-                <input type="checkbox" ng-model="agree">
-                <span class="input-checkbox__box"><svg role="presentation"><use xlink:href="#icon-check" /></svg></span>
-              </span>
-              I agree to the Whiteout Networks <a href="https://whiteout.io/terms.html" target="_blank">Terms of Service</a> and have read the <a href="https://whiteout.io/privacy-service.html" target="_blank">Privacy Policy</a>
-            </label>
-          </div>
-          <div class="form__row">
-            <label class="input-checkbox">
-              <span class="checkbox">
-                <input type="checkbox" ng-model="newsletter">
-                <span class="input-checkbox__box"><svg role="presentation"><use xlink:href="#icon-check" /></svg></span>
-              </span>
-              Stay up to date on Whiteout Networks products and important announcements.
-            </label>
-          </div>
 
           <div class="form__row">
             <button type="submit" ng-click="generateKey()" class="btn" tabindex="3">Generate new key</button>

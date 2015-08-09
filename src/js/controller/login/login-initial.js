@@ -22,15 +22,7 @@ var LoginInitialCtrl = function($scope, $location, $routeParams, $q, newsletter,
      * Continue to key import screen
      */
     $scope.importKey = function() {
-        if (!$scope.agree) {
-            displayError(new Error(termsMsg));
-            return;
-        }
-
         $scope.errMsg = undefined;
-
-        // sing up to newsletter
-        newsletter.signup(emailAddress, $scope.newsletter);
         // go to key import
         $location.path('/login-new-device');
     };
@@ -39,13 +31,7 @@ var LoginInitialCtrl = function($scope, $location, $routeParams, $q, newsletter,
      * Continue to keygen
      */
     $scope.generateKey = function() {
-        if (!$scope.agree) {
-            displayError(new Error(termsMsg));
-            return;
-        }
 
-        // sing up to newsletter
-        newsletter.signup(emailAddress, $scope.newsletter);
         // go to set keygen screen
         $scope.setState(states.PROCESSING);
 
