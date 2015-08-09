@@ -159,7 +159,7 @@ app.get('/publickey/user/:email', function (req, res, next) {
 
 /// PUT publickey/user/admin@example.org/key/AF3DB54BE8D443A5
 var jsonBodyParser = bodyParser.json();
-app.put('/publickey/user/:email/key/:keyId', jsonBodyParser, function() {
+app.put('/publickey/user/:email/key/:keyId', jsonBodyParser, function(req, res, next) {
     log.info('PUT key', 'Request for %s, %s', req.params.email, req.params.keyId);
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");

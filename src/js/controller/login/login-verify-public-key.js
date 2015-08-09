@@ -22,8 +22,8 @@ var PublicKeyVerifierCtrl = function($scope, $location, $q, $timeout, $interval,
 
         }).then(function(cloudPubkey) {
             if (!cloudPubkey || (cloudPubkey && cloudPubkey.source)) {
-                // no pubkey, need to do the roundtrip
-                return verifyImap();
+                // no pubkey, wait for user to verify.
+                scheduleVerification();
             }
 
             // pubkey has already been verified, we're done here
@@ -31,22 +31,8 @@ var PublicKeyVerifierCtrl = function($scope, $location, $q, $timeout, $interval,
 
         }).catch(function(error) {
             $scope.errMsg = error.message; // display error
-
             scheduleVerification(); // schedule next verification attempt
         });
-
-        function verifyImap() {
-            // retrieve the credentials
-            return auth.getCredentials().then(function(credentials) {
-                return publickeyVerifier.configure(credentials); // configure imap
-
-            }).then(function() {
-                return publickeyVerifier.verify(); // connect to imap to look for the message
-
-            }).then(function() {
-                return success();
-            });
-        }
     };
 
     function success() {
