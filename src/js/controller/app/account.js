@@ -42,7 +42,7 @@ var AccountCtrl = function($scope, $q, auth, keychain, pgp, appConfig, download,
 
         }).then(function(keys) {
             var keyId = keys.publicKey._id;
-            var file = 'whiteout_mail_' + userId + '_' + keyId.substring(8, keyId.length);
+            var file = 'gpgkeys_mail_' + userId + '_' + keyId.substring(8, keyId.length);
 
             download.createDownload({
                 content: keys.publicKey.publicKey + '\r\n' + keys.privateKey.encryptedKey,

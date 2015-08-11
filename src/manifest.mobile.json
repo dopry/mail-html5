@@ -1,11 +1,11 @@
 {
-    "packageId": "io.whiteout.WhiteoutMail",
+    "packageId": "com.seriousmumbo.SeriousMail",
     "versionCode": 28,
     "CFBundleVersion": "1",
 
     "ios": {
         "oauth2": {
-            "client_id": "440907777130-m0cn01eot554ik1h70hfcmvidnq61oer.apps.googleusercontent.com"
+            "client_id": "????????.apps.googleusercontent.com"
         },
         "icons": {
             "29": "img/icon-29-ios.png",

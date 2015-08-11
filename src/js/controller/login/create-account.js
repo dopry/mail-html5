@@ -21,13 +21,13 @@ var CreateAccountCtrl = function($scope, $location, $routeParams, $q, auth, admi
             showNegativeBtn: true,
             callback: function(granted) {
                 if (granted) {
-                    $scope.createWhiteoutAccount();
+                    $scope.createAccount();
                 }
             }
         });
     };
 
-    $scope.createWhiteoutAccount = function() {
+    $scope.createAccount = function() {
         return $q(function(resolve) {
             $scope.busy = true;
             $scope.errMsg = undefined; // reset error msg

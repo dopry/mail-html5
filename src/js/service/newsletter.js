@@ -7,9 +7,9 @@ module.exports = Newsletter;
 function Newsletter() {}
 
 /**
- * Sign up to the whiteout newsletter
+ * Sign up to the newsletter
  */
-Newsletter.prototype.signup = function(emailAddress, agree) {
+Newsletter.prototype.signup = function(emailAddress, agree, appConfig) {
     return new Promise(function(resolve, reject) {
         // validate email address
         if (emailAddress.indexOf('@') < 0) {
@@ -25,9 +25,11 @@ Newsletter.prototype.signup = function(emailAddress, agree) {
 
         var formData = new FormData();
         formData.append('EMAIL', emailAddress);
-        formData.append('b_52ea5a9e1be9e1d194f184158_6538e8f09f', '');
+        formData.append('b_' + appConfig.mailChimpApiKey, '');
 
-        var uri = 'https://whiteout.us8.list-manage.com/subscribe/post?u=52ea5a9e1be9e1d194f184158&id=6538e8f09f';
+        var uri = appConfig.mailChimpEndPoint + '/subscribe/post' +
+                      '?u=' + appConfig.mailChimpApiKey +
+                      '&id=' + appConfig.mailChimpListId;
         var xhr = new XMLHttpRequest();
         xhr.open('post', uri, true);
 

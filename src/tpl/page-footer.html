@@ -1,11 +1,11 @@
 <footer class="page__footer" ng-controller="AboutCtrl">
   <nav>
     <ul>
-      <li><a href="https://whiteout.io/imprint.html" target="_blank">Imprint</a></li>
-      <li><a href="https://whiteout.io/privacy-service.html" target="_blank">Privacy</a></li>
-      <li><a href="https://whiteout.io/terms.html" target="_blank">Terms</a></li>
+      <li><a href="/imprint" target="_blank">Imprint</a></li>
+      <li><a href="/privacy-service" target="_blank">Privacy</a></li>
+      <li><a href="/terms" target="_blank">Terms</a></li>
       <li>Version: {{version}}</li>
     </ul>
   </nav>
-  &copy; {{ date | date:'yyyy'}} Whiteout Networks GmbH
+  &copy; {{formatDate currentDate "%Y"}} SeriousMumbo, derived from Whiteout Mail &copy; 2015 Whiteout Networks GmbH
 </footer>

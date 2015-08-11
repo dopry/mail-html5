@@ -47,7 +47,7 @@ var AddAccountCtrl = function($scope, $location, $routeParams, $timeout, $q, mai
             positiveBtnStr: 'Google sign in',
             negativeBtnStr: 'Password',
             showNegativeBtn: true,
-            faqLink: 'https://github.com/whiteout-io/mail-html5/wiki/FAQ#how-does-sign-in-with-google-work',
+            faqLink: '/faq/how-does-sign-in-with-google-work',
             callback: function(granted) {
                 if (granted) {
                     // query oauth token

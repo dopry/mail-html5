@@ -1,5 +1,5 @@
 {
-    "name": "Whiteout Mail",
+    "name": "Serious Mail",
     "description": "Simple and elegant email client with integrated end-to-end encryption. Keeping your emails safe has never been so easy.",
     "version": "0.22.1.0",
     "launch_path": "/index.html",
@@ -8,8 +8,8 @@
         "196": "/img/icon-196-universal.png"
     },
     "developer": {
-        "name": "Whiteout Networks GmbH",
-        "url": "https://whiteout.io"
+        "name": "Serious Mumbo",
+        "url": "https://seriousmumbo.com"
     },
     "default_locale": "en",
     "type": "privileged",

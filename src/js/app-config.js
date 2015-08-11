@@ -1,3 +1,4 @@
+
 'use strict';
 
 var appCfg = {};
@@ -11,9 +12,9 @@ module.exports = appCfg;
 /**
  * Global app configurations
  */
- console.log('location', window.location);
+console.log('location', window.location);
 appCfg.config = {
-    pgpComment: 'Whiteout Mail - https://whiteout.io',
+    pgpComment: 'Serious Mail',
     keyServerUrl: window.location.origin,
     hkpUrl: 'http://keyserver.ubuntu.com',
     adminUrl: window.location.origin + '/admin',
@@ -84,10 +85,10 @@ function setConfigParams(manifest) {
 appCfg.string = {
     fallbackSubject: '(no subject)',
     invitationSubject: 'Invitation to a private conversation',
-    invitationMessage: 'Hi,\n\nI use Whiteout Mail to send and receive encrypted email. I would like to exchange encrypted messages with you as well.\n\nPlease install the Whiteout Mail application. This application makes it easy to read and write messages securely with PGP encryption applied.\n\nGo to the Whiteout Networks homepage to learn more and to download the application: https://whiteout.io\n\n',
-    signature: '\n\n\n--\nSent from Whiteout Mail - https://whiteout.io\n\nMy PGP key: ',
-    webSite: 'http://whiteout.io',
-    verificationSubject: '[whiteout] New public key uploaded',
+    invitationMessage: 'Hi,\n\nI use Serious Mail to send and receive encrypted email. I would like to exchange encrypted messages with you as well.\n\nPlease install a GPG Mail application. This application makes it easy to read and write messages securely with PGP encryption applied.\n\n',
+    signature: '\n\n\n--\nSent from Serious Mail - https://seriousmumbo.com\n\nMy PGP key: ',
+    webSite: 'http://seriousmumbo.com',
+    verificationSubject: '[seriousmail] New public key uploaded',
     sendBtnClear: 'Send',
     sendBtnSecure: 'Send securely',
     updatePublicKeyTitle: 'Public Key Updated',
@@ -101,11 +102,11 @@ appCfg.string = {
     updateCertificateMessage: 'The SSL certificate for the mail server {0} changed. Do you want to proceed?',
     updateCertificatePosBtn: 'Yes',
     updateCertificateNegBtn: 'No',
-    certificateFaqLink: 'https://github.com/whiteout-io/mail-html5/wiki/FAQ#what-does-the-ssl-certificate-for-the-mail-server--changed-mean',
+    certificateFaqLink: '/faq/what-does-the-ssl-certificate-for-the-mail-server--changed-mean',
     bugReportTitle: 'Report a bug',
     bugReportSubject: '[Bug] I want to report a bug',
     bugReportBody: 'Steps to reproduce\n1. \n2. \n3. \n\nWhat happens?\n\n\nWhat do you expect to happen instead?\n\n\n\n== PLEASE DONT PUT ANY KEYS HERE! ==\n\n\n## Log\n\nBelow is the log. It includes your interactions with your email provider from the point where you started the app for the last time. Login data and email content has been stripped. Any information provided by you will be used for the purpose of locating and fixing the bug you reported. It will be deleted subsequently. However, you can edit this log and/or remove log data in the event that something would show up.\n\nUser-Agent: {0}\nVersion: {1}\n\n',
-    supportAddress: 'mail.support@whiteout.io',
+    supportAddress: 'support@seriousmumbo.com',
     connDocOffline: 'It appears that you are offline. Please retry when you are online.',
     connDocTlsWrongCert: 'A connection to {0} was rejected because the TLS certificate is invalid. Please have a look at the FAQ for information on how to fix this error.',
     connDocHostUnreachable: 'We could not establish a connection to {0}. Please check the server settings!',
@@ -116,5 +117,9 @@ appCfg.string = {
     logoutTitle: 'Logout',
     logoutMessage: 'Are you sure you want to log out? Please back up your encryption key before proceeding!',
     removePreAuthAccountTitle: 'Remove account',
-    removePreAuthAccountMessage: 'Are you sure you want to remove your account from this device?'
+    removePreAuthAccountMessage: 'Are you sure you want to remove your account from this device?',
+    mailchimpListId: '',
+    mailchimpApiKey: '52ea5a9e1be9e1d194f184158_6538e8f09f',
+    mailChimpEndPoint: 'http://seriousmail.us8.list-manage.com/'
+
 };

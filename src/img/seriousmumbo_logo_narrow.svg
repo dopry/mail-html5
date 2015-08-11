@@ -9,14 +9,14 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="49.818432"
-   height="49.829029"
-   id="svg4141"
+   width="89.654655"
+   height="91.199257"
+   id="svg4009"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="New document 8">
+   sodipodi:docname="seriousmumbo_logo_narrow.svg">
   <defs
-     id="defs4143" />
+     id="defs4011" />
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -25,22 +25,22 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="24.902554"
-     inkscape:cy="24.914821"
+     inkscape:cx="102.68447"
+     inkscape:cy="8.4567714"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
+     inkscape:window-width="1090"
+     inkscape:window-height="917"
+     inkscape:window-x="1652"
+     inkscape:window-y="52"
+     inkscape:window-maximized="0"
      fit-margin-top="0"
      fit-margin-left="0"
      fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:window-width="463"
-     inkscape:window-height="423"
-     inkscape:window-x="1808"
-     inkscape:window-y="208"
-     inkscape:window-maximized="0" />
+     fit-margin-bottom="0" />
   <metadata
-     id="metadata4146">
+     id="metadata4014">
     <rdf:RDF>
       <cc:Work
          rdf:about="">
@@ -55,11 +55,33 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-350.09745,-507.44797)">
+     transform="translate(-272.31553,-449.61969)">
+    <text
+       xml:space="preserve"
+       style="font-size:21.43914032px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#f16060;fill-opacity:1;stroke:none;font-family:Archive;-inkscape-font-specification:Archive"
+       x="271.74405"
+       y="519.79974"
+       id="text4691-1-7-3-1"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4693-8-1-0-7"
+         x="271.74405"
+         y="519.79974">SERIOUS</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:21.43914032px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#8c8c8e;fill-opacity:1;stroke:none;font-family:Archive;-inkscape-font-specification:Archive"
+       x="279.1156"
+       y="540.48962"
+       id="text4695-8-3-3-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4697-1-2-9-0"
+         x="279.1156"
+         y="540.48962">MUMBO</tspan></text>
     <g
        style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-opacity:1"
        id="g4134-0-7-3-5-2-2-9"
-       transform="matrix(0.79083035,0,0,0.79083035,87.636744,232.39817)">
+       transform="matrix(0.79083035,0,0,0.79083035,29.779601,174.56545)">
       <path
          inkscape:connector-curvature="0"
          id="path3763-0-8-1-6-10-3-4"
@@ -99,7 +121,7 @@
            sodipodi:cy="397.6748"
            sodipodi:rx="23.733141"
            sodipodi:ry="23.733141"
-           d="m -48.623991,397.6748 c 0,13.10746 -10.625689,23.73315 -23.733141,23.73315 -13.107452,0 -23.733141,-10.62569 -23.733141,-23.73315 0,-13.10745 10.625689,-23.73314 23.733141,-23.73314 13.107452,0 23.733141,10.62569 23.733141,23.73314 z"
+           d="m -48.623991,397.6748 a 23.733141,23.733141 0 1 1 -47.466282,0 23.733141,23.733141 0 1 1 47.466282,0 z"
            transform="translate(0,-4)" />
         <path
            transform="translate(-1.2097179,84.776577)"
@@ -110,7 +132,7 @@
            sodipodi:cy="397.6748"
            sodipodi:rx="23.733141"
            sodipodi:ry="23.733141"
-           d="m -48.623991,397.6748 c 0,13.10746 -10.625689,23.73315 -23.733141,23.73315 -13.107452,0 -23.733141,-10.62569 -23.733141,-23.73315 0,-13.10745 10.625689,-23.73314 23.733141,-23.73314 13.107452,0 23.733141,10.62569 23.733141,23.73314 z" />
+           d="m -48.623991,397.6748 a 23.733141,23.733141 0 1 1 -47.466282,0 23.733141,23.733141 0 1 1 47.466282,0 z" />
         <path
            transform="translate(-88.24971,83.934292)"
            sodipodi:type="arc"
@@ -120,7 +142,7 @@
            sodipodi:cy="397.6748"
            sodipodi:rx="23.733141"
            sodipodi:ry="23.733141"
-           d="m -48.623991,397.6748 c 0,13.10746 -10.625689,23.73315 -23.733141,23.73315 -13.107452,0 -23.733141,-10.62569 -23.733141,-23.73315 0,-13.10745 10.625689,-23.73314 23.733141,-23.73314 13.107452,0 23.733141,10.62569 23.733141,23.73314 z" />
+           d="m -48.623991,397.6748 a 23.733141,23.733141 0 1 1 -47.466282,0 23.733141,23.733141 0 1 1 47.466282,0 z" />
         <path
            transform="translate(-87.407424,-4.5788432)"
            sodipodi:type="arc"
@@ -130,7 +152,7 @@
            sodipodi:cy="397.6748"
            sodipodi:rx="23.733141"
            sodipodi:ry="23.733141"
-           d="m -48.623991,397.6748 c 0,13.10746 -10.625689,23.73315 -23.733141,23.73315 -13.107452,0 -23.733141,-10.62569 -23.733141,-23.73315 0,-13.10745 10.625689,-23.73314 23.733141,-23.73314 13.107452,0 23.733141,10.62569 23.733141,23.73314 z" />
+           d="m -48.623991,397.6748 a 23.733141,23.733141 0 1 1 -47.466282,0 23.733141,23.733141 0 1 1 47.466282,0 z" />
       </g>
     </g>
   </g>
