@@ -894,7 +894,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dist-assets', ['svgmin', 'svgstore', 'string-replace']);
     grunt.registerTask('dist-styleguide', ['sass:styleguide', 'autoprefixer:styleguide', 'csso:styleguide', 'assemble:styleguide']);
     // generate styleguide after manifest to forward version number to styleguide
-    grunt.registerTask('dist', ['clean:dist', 'shell', 'dist-css', 'dist-js', 'dist-assets', 'dist-copy', 'manifest', 'dist-styleguide']);
+    grunt.registerTask('dist', ['clean:dist', /*'shell',*/ 'dist-css', 'dist-js', 'dist-assets', 'dist-copy', 'manifest', 'dist-styleguide']);
 
     grunt.registerTask('offline-cache', ['manifest', 'swPrecache:prod']);
 
