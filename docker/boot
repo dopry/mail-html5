@@ -15,6 +15,9 @@ else
 	cp /etc/ssl/certs/ssl-cert-snakeoil.pem /mail_settings/ssl-cert-snakeoil.pem
 fi
 
+if [ ! -f /mail_settings/myhostname]; then
+    echo example.org > /mail_settings/myhostname
+fi
 
 # Update hostname if given
 if [ -f /mail_settings/myhostname ]; then
@@ -22,6 +25,15 @@ if [ -f /mail_settings/myhostname ]; then
 	echo $(sed 's:/:\\/:g' /mail_settings/myhostname) > /etc/mailname
 fi
 
+if [ ! -f  /mail_settings/aliases ]; then
+    echo "" > /mail_settings/aliases
+    echo "admin@example.org   admin@example.org" >> /mail_settings/aliases
+    echo "@example.org    catch-all@example.org" >> /mail_settings/aliases
+fi
+
+if [ ! -f /mail_settings/domains ]; then
+    echo "example.org" > /mail_settings/domains
+fi
 # Configure mail delivery to dovecot
 cp /mail_settings/aliases /etc/postfix/virtual
 cp /mail_settings/domains /etc/postfix/virtual-mailbox-domains
