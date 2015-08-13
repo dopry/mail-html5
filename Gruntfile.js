@@ -552,7 +552,7 @@ module.exports = function(grunt) {
                 tasks: ['dist-styleguide']
             },
             jsApp: {
-                files: ['src/js/**/*.js', 'src/*.html', ],
+                files: ['src/js/**/*.js', 'src/*.html', 'node_modules/**/*.js' ],
                 tasks: ['browserify:app', 'exorcise:app', 'concat:app'],
                 options: {
                     livereload: true
