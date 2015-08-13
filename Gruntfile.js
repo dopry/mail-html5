@@ -262,7 +262,7 @@ module.exports = function(grunt) {
         ngtemplates: {
             mail: {
                 src: [
-                    'tpl/**/*.html'
+                    'tpl/**/*.html', 'js/**/*.html'
                 ],
                 dest: 'dist/js/app.templates.js',
                 cwd: 'src/',
@@ -573,7 +573,7 @@ module.exports = function(grunt) {
                 }
             },
             templates: {
-                files: ['src/tpl/**/*.html'],
+                files: ['src/tpl/**/*.html', 'src/js/**/*.html'],
                 tasks: ['ngtemplates', 'concat:app'],
                 options: {
                     livereload: true
