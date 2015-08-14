@@ -184,15 +184,6 @@ app.use('/tpl/read-sandbox.html', function(req, res, next) {
     next();
 });
 
-// redirect all http traffic to https
-app.use(function(req, res, next) {
-    if ((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https') && !development) {
-        res.redirect('https://' + req.hostname + req.url);
-    } else {
-        next();
-    }
-});
-
 // use gzip compression
 app.use(compression());
 
@@ -277,7 +268,4 @@ io.on('connection', function(socket) {
 // start server
 //
 server.listen(config.server.port);
-if (development) {
-    console.log(' > starting in development mode');
-}
 console.log(' > listening on http://localhost:' + config.server.port + '\n');
