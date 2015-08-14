@@ -164,7 +164,7 @@ app.use(function(req, res, next) {
     // HSTS
     res.set('Strict-Transport-Security', 'max-age=16070400; includeSubDomains');
     // CSP
-    var iframe = development ? "http://" + req.hostname + ":" + config.server.port : "https://" + req.hostname; // allow iframe to load assets
+    var iframe = req.protocol + "://" + req.headers.host; // allow iframe to load assets
     var csp = "default-src 'self' " + iframe + "; object-src 'none'; connect-src *; style-src 'self' 'unsafe-inline' " + iframe + "; img-src *";
     res.set('Content-Security-Policy', csp);
     res.set('X-Content-Security-Policy', csp);
