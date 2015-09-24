@@ -108,9 +108,12 @@ RUN chmod 755 /boot
 # Volume to store email
 VOLUME ["/vmail"]
 
-# Add user vmail that ownes mail
-RUN groupadd -g 5000 vmail
-RUN useradd -g vmail -u 5000 vmail -d /vmail -m
+# Add user vmail that owndocks mail
+RUN groupadd -g 5000 vmail  \
+    && useradd -g vmail -u 5000 vmail -d /vmail -m  \
+    && adduser dovecot vmail \
+    && chown vmail:vmail /vmail \
+    && chmod 1775 /vmail
 
 EXPOSE 25 143 587
 ENTRYPOINT /boot; service postfix start; service dovecot start; rsyslogd -n
