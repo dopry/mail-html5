@@ -65,6 +65,10 @@ Then you can start a local instance with watchers and [live reload](http://liver
     grunt dev
 ```
 
+if you need a local mail server for testing.
+
+  * see: [docker/README.md](docker/README.md)
+
 If a browser window does not open to the local development instance automatically, you can goto [http://localhost:8859](http://localhost:8859) manually.
 
 
@@ -150,3 +154,40 @@ We work together with existing open source projects wherever possible and contri
 * [OpenPGP.js](http://openpgpjs.org) (LGPL license): An implementation of OpenPGP in Javascript
 * [email.js](http://emailjs.org) (MIT license): IMAP, SMTP, MIME-building and MIME-parsing engine
 * [Forge](https://github.com/digitalbazaar/forge) (BSD license): An implementation of TLS in JavaScript
+
+### Development Notes
+
+Login Process
+
+If already logged in
+    1. Enter symmetric key to unlock password in IndexDB.
+    2. Get keypair from IndexDB
+    3. Goto Account Screen
+
+
+If not logged in (determined by looking in IndexDB for keys and such)
+    1. Enter Email
+    2. Auto Discover Email config based on domain name.
+    3. Enter Imap Credentials.
+    4. Lookup public key by email address to get id. GET /publickey/:email/keys/:id
+        1. If not found goto Generate Key
+    5. Lookup public key by id from key server.  GET /publickey/key/:id
+        1. If not found goto Generate Key
+    6. Lookup private key from email using key id.
+        1. If not found goto Generate Key
+    7. Request backup code to decrypt private key.
+    8. Decrypt private Key,
+    9. goto /account.
+
+
+
+Generate Key
+1. Generate Private Key
+2. Generate Backup Code (symmetric key used to encrypt private key in IMAP)
+3. Confirm Backup Code
+4. Encrypt Private Key
+5. Save Encryped Private Key to Imap.
+6. Upload public key to keyserver.
+7. Confirm public key uploaded.
+8. Goto /account
+

@@ -262,7 +262,7 @@ module.exports = function(grunt) {
         ngtemplates: {
             mail: {
                 src: [
-                    'tpl/**/*.html'
+                    'tpl/**/*.html', 'js/**/*.html'
                 ],
                 dest: 'dist/js/app.templates.js',
                 cwd: 'src/',
@@ -552,7 +552,7 @@ module.exports = function(grunt) {
                 tasks: ['dist-styleguide']
             },
             jsApp: {
-                files: ['src/js/**/*.js', 'src/*.html', ],
+                files: ['src/js/**/*.js', 'src/*.html', 'node_modules/**/*.js' ],
                 tasks: ['browserify:app', 'exorcise:app', 'concat:app'],
                 options: {
                     livereload: true
@@ -573,7 +573,7 @@ module.exports = function(grunt) {
                 }
             },
             templates: {
-                files: ['src/tpl/**/*.html'],
+                files: ['src/tpl/**/*.html', 'src/js/**/*.html'],
                 tasks: ['ngtemplates', 'concat:app'],
                 options: {
                     livereload: true
@@ -894,7 +894,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dist-assets', ['svgmin', 'svgstore', 'string-replace']);
     grunt.registerTask('dist-styleguide', ['sass:styleguide', 'autoprefixer:styleguide', 'csso:styleguide', 'assemble:styleguide']);
     // generate styleguide after manifest to forward version number to styleguide
-    grunt.registerTask('dist', ['clean:dist', 'shell', 'dist-css', 'dist-js', 'dist-assets', 'dist-copy', 'manifest', 'dist-styleguide']);
+    grunt.registerTask('dist', ['clean:dist', /*'shell',*/ 'dist-css', 'dist-js', 'dist-assets', 'dist-copy', 'manifest', 'dist-styleguide']);
 
     grunt.registerTask('offline-cache', ['manifest', 'swPrecache:prod']);
 

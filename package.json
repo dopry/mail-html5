@@ -1,11 +1,11 @@
 {
-  "name": "whiteout-mail",
+  "name": "serious-mail",
   "description": "Mail App with integrated OpenPGP encryption.",
-  "author": "Whiteout Networks",
-  "homepage": "https://whiteout.io",
+  "author": "Serious Mumbo",
+  "homepage": "https://seriousmumbo.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/whiteout-io/mail-html5.git"
+    "url": "https://github.com/spry-group/serious-mail.git"
   },
   "keywords": [
     "email",
