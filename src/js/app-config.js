@@ -15,7 +15,8 @@ module.exports = appCfg;
 console.log('location', window.location);
 appCfg.config = {
     pgpComment: 'Serious Mail',
-    keyServerUrl: window.location.origin,
+    //keyServerUrl: window.location.origin,
+    keyServerUrl: 'http://localhost:8000',
     hkpUrl: 'http://keyserver.ubuntu.com',
     adminUrl: window.location.origin + '/admin',
     settingsUrl: window.location.origin + '/autodiscovery/',
