@@ -15,7 +15,7 @@ else
 	cp /etc/ssl/certs/ssl-cert-snakeoil.pem /mail_settings/ssl-cert-snakeoil.pem
 fi
 
-if [ ! -f /mail_settings/myhostname]; then
+if [ ! -f /mail_settings/myhostname ]; then
     echo example.org > /mail_settings/myhostname
 fi
 

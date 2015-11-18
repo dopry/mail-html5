@@ -1,10 +1,11 @@
-FROM ubuntu:14.10
+FROM ubuntu:15.10
 
 ENV DEBIAN_FRONTEND noninteractive
 
 # Prerequisites
 RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d && \
     apt-get update && apt-get install -y \
+    rsyslog \
     ssl-cert \
     postfix \
     dovecot-imapd && \
@@ -97,13 +98,15 @@ COPY ./config/example/passwords /etc/dovecot/passwd
 COPY ./config/dovecot.logging /etc/dovecot/conf.d/10-logging.conf
 COPY ./config/rsyslog.conf /etc/rsyslog.conf
 
+# Default mail configuration, volume can be overridden.
+ADD ./config/example /mail_settings
+
 # Nice place for your settings
 VOLUME ["/mail_settings"]
 
 # Copy boot scripts
 COPY boot /
 RUN chmod 755 /boot
-
 
 # Volume to store email
 VOLUME ["/vmail"]
